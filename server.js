@@ -1,6 +1,7 @@
 const express = require('express')
 const mongoose = require('mongoose')
 const app = express()
+const mongoUri= process.env.MONGOURI;
 
 
 //using middleware
@@ -13,7 +14,7 @@ app.get('/',(req, res) =>{
 })
 
 app.get('/blog',(req, res) =>{
-    res.send(`hello, blog, my name is Adaiah`)
+    res.send(`hello, welcome to the server`)
 })
 
 
@@ -51,7 +52,7 @@ try {
 
 
 mongoose.set("strictQuery", false)
-mongoose.connect('mongodb+srv://ohenewaahedinam804:lovell@cluster1.jjmclu4.mongodb.net/Record-system?retryWrites=true&w=majority')
+mongoose.connect (mongoURI)
 .then(()=>{
     console.log('connected to MongoDB')
     app.listen(3000, () =>{
